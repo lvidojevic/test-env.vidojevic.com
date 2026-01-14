@@ -18,9 +18,11 @@ body {
 
 /* ================= LAYOUT ================= */
 .container {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px; /* change to 1280 / 1440 later if you want */
   margin: 0 auto;
-  padding: 0 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .section {
