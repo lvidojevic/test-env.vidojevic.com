@@ -1,0 +1,10 @@
+.dev-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #e11d48;
+  color: white;
+  font-size: 12px;
+  padding: 6px 12px;
+  z-index: 9999;
+}
