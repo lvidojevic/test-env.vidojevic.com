@@ -1,21 +1,17 @@
-import Link from "next/link";
+"use client";
+
+import { useTheme } from "./ClientThemeProvider";
 
 export default function Footer() {
-  return (
-    <footer className="border-t mt-24">
-      <div className="container py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm">
-        
-        <nav className="flex gap-4">
-          <Link href="/">Home</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/portfolio">Portfolio</Link>
-          <Link href="/cv">CV</Link>
-          <Link href="/about">About</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
+  const { theme } = useTheme();
 
-        <p>© {new Date().getFullYear()} Lazar Vidojevic</p>
-      </div>
+  return (
+    <footer
+      className={`p-4 text-center transition-colors ${
+        theme === "dark" ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"
+      }`}
+    >
+      © {new Date().getFullYear()} Lazar Vidojevic. All rights reserved.
     </footer>
   );
 }

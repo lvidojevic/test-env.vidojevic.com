@@ -1,25 +1,31 @@
-import Link from "next/link";
-import { Home, Briefcase, Folder, FileText, User, Mail } from "lucide-react";
+"use client";
+
+import { useTheme } from "./ClientThemeProvider";
 
 export default function Navbar() {
+  const { theme, toggleTheme, useSystem, setUseSystem } = useTheme();
+
   return (
-    <header className="border-b">
-      <div className="container flex h-16 items-center justify-between">
-        
-        <Link href="/" className="text-xl font-bold">
-          LV
-        </Link>
+    <nav className="p-4 flex justify-between items-center bg-gray-100 dark:bg-gray-800">
+      <div className="text-xl font-bold">Lazar Vidojevic</div>
 
-        <nav className="hidden md:flex gap-6 text-sm">
-          <Link href="/" className="flex items-center gap-1"><Home size={16} />Home</Link>
-          <Link href="/services"><Briefcase size={16} />Services</Link>
-          <Link href="/portfolio"><Folder size={16} />Portfolio</Link>
-          <Link href="/cv"><FileText size={16} />CV</Link>
-          <Link href="/about"><User size={16} />About</Link>
-          <Link href="/contact"><Mail size={16} />Contact</Link>
-        </nav>
+      <div className="flex items-center gap-4">
+        <button
+          onClick={toggleTheme}
+          className="px-3 py-1 border rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+        >
+          {theme === "light" ? "Dark Mode" : "Light Mode"}
+        </button>
 
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={useSystem}
+            onChange={(e) => setUseSystem(e.target.checked)}
+          />
+          Use system preference
+        </label>
       </div>
-    </header>
+    </nav>
   );
 }
