@@ -1,31 +1,27 @@
 "use client";
 
-import { useTheme } from "./ClientThemeProvider";
+import Link from "next/link";
 
 export default function Navbar() {
-  const { theme, toggleTheme, useSystem, setUseSystem } = useTheme();
-
   return (
-    <nav className="p-4 flex justify-between items-center bg-gray-100 dark:bg-gray-800">
-      <div className="text-xl font-bold">Lazar Vidojevic</div>
+    <header className="border-b">
+      <div className="container flex h-16 items-center justify-between">
+        
+        {/* Logo / Brand */}
+        <Link href="/" className="text-xl font-bold">
+          LV
+        </Link>
 
-      <div className="flex items-center gap-4">
-        <button
-          onClick={toggleTheme}
-          className="px-3 py-1 border rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-        >
-          {theme === "light" ? "Dark Mode" : "Light Mode"}
-        </button>
-
-        <label className="flex items-center gap-2">
-          <input
-            type="checkbox"
-            checked={useSystem}
-            onChange={(e) => setUseSystem(e.target.checked)}
-          />
-          Use system preference
-        </label>
+        {/* Navigation Links */}
+        <nav className="hidden md:flex gap-6 text-sm">
+          <Link href="/">Home</Link>
+          <Link href="/services">Services</Link>
+          <Link href="/portfolio">Portfolio</Link>
+          <Link href="/cv">CV</Link>
+          <Link href="/about">About</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }
